@@ -1,6 +1,12 @@
 import './ExpenseItem.css'
 
-export default function ExpenseItem({title, amount, date}) {
+interface Props {
+    title: string;
+    amount: number;
+    date: Date
+}
+
+export default function ExpenseItem({title, amount, date}: Props) {
     
     return (
         <div className='expense-item'>
