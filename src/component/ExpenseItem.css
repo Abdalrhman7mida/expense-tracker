@@ -35,6 +35,13 @@
     border: 1px solid white;
     padding: 0.5rem;
     border-radius: 12px;
+    content: '$';
+  }
+
+  .expense-item__price::before {
+    content: '$';
+    display: inline-block;
+    margin-right: 0.25rem;
   }
   
   @media (min-width: 580px) {
