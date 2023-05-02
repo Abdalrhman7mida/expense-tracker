@@ -1,4 +1,5 @@
 import './ExpenseItem.css'
+import {ExpenseDate} from './ExpenseDate'
 
 interface Props {
     title: string;
@@ -6,19 +7,13 @@ interface Props {
     date: Date
 }
 
-export default function ExpenseItem({title, amount, date: expenseDate}: Props) {
-    const year = expenseDate.getFullYear();
-    const month = expenseDate.toLocaleString('en-US', {month: 'long'});
-    const day = expenseDate.toLocaleString('en-US', {day: '2-digit'});
-    // const formattedDate: string = `${month} ${year} ${day}`
+export default function ExpenseItem({title, amount, date}: Props) {
+    
     
     return (
         <div className='expense-item'>
-            <div>
-                <div>{month}</div>
-                <div>{year}</div>
-                <div>{day}</div>
-            </div>
+            <ExpenseDate date= {date}/>
+            
             <div className='expense-item__description'>
                 <h2>{title}</h2>
                 <div className='expense-item__price'>{amount}</div>
