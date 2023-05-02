@@ -1,4 +1,5 @@
 import React from "react";
+import './ExpenseDate.css'
 
 interface Props {
     date: Date;
@@ -11,10 +12,10 @@ export function ExpenseDate( {date: expenseDate}: Props) {
   // const formattedDate: string = `${month} ${year} ${day}`
 
   return (
-    <div>
-      <div>{month}</div>
-      <div>{year}</div>
-      <div>{day}</div>
+    <div className="expense-date">
+      <div className="expense-date__month">{month}</div>
+      <div className="expense-date__year">{year}</div>
+      <div className="expense-date__day">{day}</div>
     </div>
   );
 }
