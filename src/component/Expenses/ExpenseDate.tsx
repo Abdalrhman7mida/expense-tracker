@@ -4,7 +4,7 @@ interface Props {
     date: Date;
   }
 
-export function ExpenseDate( {date: expenseDate}: Props) {
+export const ExpenseDate = ( {date: expenseDate}: Props) => {
   const year = expenseDate.getFullYear();
   const month = expenseDate.toLocaleString("en-US", { month: "long" });
   const day = expenseDate.toLocaleString("en-US", { day: "2-digit" });

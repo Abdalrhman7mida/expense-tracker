@@ -8,8 +8,8 @@ interface Props {
     date: Date
 }
 
-export default function ExpenseItem({title, amount, date}: Props) {
-    
+export const ExpenseItem = (props: Props) => {
+    const {title, amount, date} = props;
     
     return (
         <Card className='expense-item'>
