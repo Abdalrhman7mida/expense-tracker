@@ -12,24 +12,30 @@ export const ExpenseForm = () => {
   });
 
   const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    });
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredtitle: event.target.value,
+      };
+    })
   };
 
   const amountChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
-    });
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredAmount: event.target.value,
+      }
+    })
   };
 
   const dateChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
-    });
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredDate: event.target.value,
+      }
+    })
   };
 
   return (
