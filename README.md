@@ -28,7 +28,7 @@ During the development of this project, I learned:
 * How to build a React app using TypeScript
 * How to create reusable components with props and interfaces
 * How to style a React app with CSS
-* How to use React hooks to manage state and handle user input **(Not Yet)**.
+* How to use React hooks to manage state and handle user input.
 * How to use charting libraries like Chart.js to visualize data **(Not Yet)**.
 
 ## Getting Started
