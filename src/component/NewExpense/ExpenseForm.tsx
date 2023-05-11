@@ -25,6 +25,9 @@ export const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate)
     }
+    setEnteredAmount("");
+    setEnteredTitle("");
+    setEnteredDate("");
   }
 
   return (
@@ -37,6 +40,7 @@ export const ExpenseForm = () => {
             name="title"
             id="description"
             onChange={titleChangeHandler}
+            value={enteredTitle}
           />
         </div>
         <div className="new-expense__control">
@@ -48,6 +52,7 @@ export const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -59,6 +64,7 @@ export const ExpenseForm = () => {
             min="2022-01-01"
             max="2023-01-01"
             onChange={dateChangeHandler}
+            value={enteredDate}
           />
         </div>
       </div>
