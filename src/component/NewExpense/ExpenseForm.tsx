@@ -1,30 +1,41 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import "./ExpenseForm.css";
 
-export const ExpenseForm = () => {
+interface ExpenseFormProps {
+  onAddExpense: (expenseData: {
+    title: string;
+    amount: string;
+    date: Date;
+  }) => void;
+}
+
+export const ExpenseForm = (props: ExpenseFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const titleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredTitle(event.target.value);
   };
 
-  const amountChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const amountChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredAmount(event.target.value);
   };
 
-  const dateChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const dateChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredDate(event.target.value);
   };
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate)
     }
+    
+    props.onAddExpense(expenseData);
     setEnteredAmount("");
     setEnteredTitle("");
     setEnteredDate("");
