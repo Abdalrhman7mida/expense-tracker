@@ -4,22 +4,23 @@ import "./ExpenseForm.css";
 interface ExpenseFormProps {
   onAddExpense: (expenseData: {
     title: string;
-    amount: string;
+    amount: number;
     date: Date;
   }) => void;
 }
 
 export const ExpenseForm = (props: ExpenseFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState<number>(0);
   const [enteredDate, setEnteredDate] = useState("");
-
   const titleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredTitle(event.target.value);
   };
 
   const amountChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setEnteredAmount(event.target.value);
+   // Parse the input value to a number
+   const amountValue = parseFloat(event.target.value);
+   setEnteredAmount(amountValue);
   };
 
   const dateChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,9 +35,9 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
       amount: enteredAmount,
       date: new Date(enteredDate)
     }
-    
+
     props.onAddExpense(expenseData);
-    setEnteredAmount("");
+    setEnteredAmount(0); // Reset to initial value
     setEnteredTitle("");
     setEnteredDate("");
   }

@@ -1,23 +1,32 @@
-import './NewExpense.css'
-import { ExpenseForm } from './ExpenseForm';
+import "./NewExpense.css";
+import { ExpenseForm } from "./ExpenseForm";
 
-const NewExpense = () => {
-    const saveExpenseDataHandler = (enteredExpenseData: {
-        title: string;
-        amount: string;
-        date: Date;
-      }) => {
-        const expenseData = {
-            ...enteredExpenseData,
-            id: Math.random().toString()
-        };
-        console.log(expenseData, "parent component");
-    }
-    return (
-        <div className="new-expense">
-            <ExpenseForm onAddExpense={saveExpenseDataHandler}/>
-        </div>
-    )
+interface NewExpensePros {
+  onAddExpense: (expense: {
+    title: string;
+    amount: number;
+    date: Date;
+    id: string;
+  }) => void;
 }
+
+const NewExpense = (props: NewExpensePros) => {
+  const saveExpenseDataHandler = (enteredExpenseData: {
+    title: string;
+    amount: number;
+    date: Date;
+  }) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    props.onAddExpense(expenseData);
+  };
+  return (
+    <div className="new-expense">
+      <ExpenseForm onAddExpense={saveExpenseDataHandler} />
+    </div>
+  );
+};
 
 export default NewExpense;
