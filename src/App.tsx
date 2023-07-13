@@ -1,7 +1,8 @@
 import "./App.css";
 import { Expenses } from "./component/Expenses/Expenses";
-import expenses from "./data/ExpenseItems";
+import DUMMY_EXPENSES from "./data/ExpenseItems";
 import NewExpense from "./component/NewExpense/NewExpense";
+import { fExpence } from "./types/types";
 
 const addExpenseHandler = (expense: {
   title: string;

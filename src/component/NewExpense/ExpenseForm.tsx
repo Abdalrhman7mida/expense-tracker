@@ -1,18 +1,16 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import "./ExpenseForm.css";
+import { fExpenceForm } from "../../types/types";
 
 interface ExpenseFormProps {
-  onAddExpense: (expenseData: {
-    title: string;
-    amount: number;
-    date: Date;
-  }) => void;
+  onAddExpense: (expenseData: fExpenceForm) => void;
 }
 
 export const ExpenseForm = (props: ExpenseFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState<number>(0);
   const [enteredDate, setEnteredDate] = useState("");
+
   const titleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredTitle(event.target.value);
   };
@@ -24,7 +22,7 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
   };
 
   const dateChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setEnteredDate(event.target.value);
+    setEnteredDate(event.target.value);  // string
   };
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -37,6 +35,7 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
     }
 
     props.onAddExpense(expenseData);
+
     setEnteredAmount(0); // Reset to initial value
     setEnteredTitle("");
     setEnteredDate("");
@@ -73,7 +72,7 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
             type="date"
             name="date"
             id="date"
-            min="2022-01-01"
+            min="2000-01-01"
             max="2023-01-01"
             onChange={dateChangeHandler}
             value={enteredDate}
