@@ -35,6 +35,27 @@ export const Expenses = ({ expenses }: { expenses: fExpence[] }) => {
   // it's re rendered when the state it depends on changes.
   const filterInfo: string = yearInfo[expenseFilterYear];
 
+  let expensesContent: JSX.Element = <h2>No Expenses found.</h2>;
+
+  if (expenses.length > 0) {
+    if (filteredExpenses.length === 0) {
+      expensesContent = <h2>No Expenses found for this year !</h2>;
+    } else {
+      expensesContent = (
+        <>
+          {filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))}
+        </>
+      );
+    }
+  }
+
   return (
     <div>
       <ExpenseFilter
@@ -42,23 +63,7 @@ export const Expenses = ({ expenses }: { expenses: fExpence[] }) => {
         selectedYear={expenseFilterYear}
       />
       <p>{filterInfo}</p>
-      <Card className="expenses">
-        {expenses.length === 0 ? (
-          <h2>No Expenses found.</h2>
-        ) : (
-          filteredExpenses.length === 0 ? (
-            <h2>No Expenses found for this year !</h2>
-          ) : (
-          filteredExpenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          ))
-        ))}
-      </Card>
+      <Card className="expenses">{expensesContent}</Card>
     </div>
   );
 };
