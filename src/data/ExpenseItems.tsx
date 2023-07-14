@@ -1,4 +1,6 @@
-const expenses = [
+import {fExpence} from "../types/types";
+
+const DUMMY_EXPENSES: fExpence[] = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -20,4 +22,4 @@ const expenses = [
   },
 ];
 
-export default expenses;
+export default DUMMY_EXPENSES;

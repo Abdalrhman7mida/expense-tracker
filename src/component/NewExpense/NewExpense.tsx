@@ -1,13 +1,9 @@
 import "./NewExpense.css";
 import { ExpenseForm } from "./ExpenseForm";
+import {fExpence} from "../../types/types";
 
 interface NewExpensePros {
-  onAddExpense: (expense: {
-    title: string;
-    amount: number;
-    date: Date;
-    id: string;
-  }) => void;
+  onAddExpense: (expense: fExpence) => void;
 }
 
 const NewExpense = (props: NewExpensePros) => {

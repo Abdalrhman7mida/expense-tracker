@@ -1,19 +1,20 @@
 import "./App.css";
 import { Expenses } from "./component/Expenses/Expenses";
-import expenses from "./data/ExpenseItems";
+import DUMMY_EXPENSES from "./data/ExpenseItems";
 import NewExpense from "./component/NewExpense/NewExpense";
+import { useState } from "react";
+import { fExpence } from "./types/types";
 
-const addExpenseHandler = (expense: {
-  title: string;
-  amount: number;
-  date: Date;
-  id: string;
-}) => {
-  console.log("in App js");
-  console.log(expense);
-};
 
 const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  const addExpenseHandler = (expense: fExpence) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  }
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
