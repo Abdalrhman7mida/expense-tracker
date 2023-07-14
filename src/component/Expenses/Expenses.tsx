@@ -1,6 +1,6 @@
-import { ExpenseItem } from "./ExpenseItem";
+import { ExpenseItem } from "../ExpenseItem/ExpenseItem";
 import Card from "../UI/Card";
-import { ExpenseFilter } from "./ExpenseFilter";
+import { ExpenseFilter } from "../ExpenseFilter/ExpenseFilter";
 import "./Expenses.css";
 import { useState } from "react";
 import { fExpence } from "../../types/types";
